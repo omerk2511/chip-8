@@ -19,13 +19,17 @@ static const std::map<sdl::key_code, size_t> KEYMAP = {
 	{ SDLK_v, 0x0f }
 };
 
+static const std::string WINDOW_NAME = "chip8";
+
+const size_t FONT_SPRITE_SIZE = 5;
+
 graphics::graphics()
 	: window_{ }, renderer_{ }, texture_{ }, bitmap_{ 0 }, keys_{ false }, exit_flag_{ false }
 {
 	sdl::init(SDL_INIT_VIDEO);
 
 	window_ = sdl::create_window(
-		"chip8", // move to a constant!
+		WINDOW_NAME.c_str(),
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		WINDOW_WIDTH,

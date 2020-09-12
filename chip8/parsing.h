@@ -5,7 +5,6 @@
 #include "types.h"
 #include "reg.h"
 #include "instruction.h"
-#include "instructions.h"
 
 namespace parsing
 {

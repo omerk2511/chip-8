@@ -1,4 +1,5 @@
 #include "parsing.h"
+#include "instructions.h"
 
 std::unique_ptr<instruction> parsing::parse_instruction(const word opcode)
 {

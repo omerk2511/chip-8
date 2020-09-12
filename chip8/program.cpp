@@ -1,5 +1,7 @@
 #include "program.h"
 
+static constexpr int CYCLE_DELAY_US = 1667;
+
 program::program(const std::vector<byte>& rom)
 	: memory_{ rom }, cpu_{ }, graphics_{ }
 {
@@ -20,15 +22,15 @@ void program::emulate()
 		}
 
 		if (cpu_.dt) { cpu_.dt--; }
-		if (cpu_.st) { cpu_.st--; printf("\7"); } // check this
+		if (cpu_.st) { cpu_.st--; } // check this beep
 
-		std::this_thread::sleep_for(std::chrono::microseconds(1667)); // move to constant
+		std::this_thread::sleep_for(std::chrono::microseconds(CYCLE_DELAY_US));
 	}
 }
 
 void program::disassemble() const
 {
 	for (auto pc = ROM_OFFSET; pc < memory_.get_rom_end(); pc += sizeof(word)) {
-		std::cout << memory_.get<std::shared_ptr<instruction>>(pc)->to_string() << std::endl;
+		std::cout << memory_.get<std::unique_ptr<instruction>>(pc)->to_string() << std::endl;
 	}
 }

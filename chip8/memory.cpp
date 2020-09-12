@@ -4,7 +4,7 @@
 const size_t MEMORY_SIZE = 4096;
 const size_t ROM_OFFSET = 0x200;
 
-static const std::vector<byte> font = {
+static const std::vector<byte> FONT = {
 	0xf0, 0x90, 0x90, 0x90, 0xf0,
 	0x20, 0x60, 0x20, 0x20, 0x70,
 	0xf0, 0x10, 0xf0, 0x80, 0xf0,
@@ -26,7 +26,7 @@ static const std::vector<byte> font = {
 memory::memory(const std::vector<byte>& rom)
 	: ram_(MEMORY_SIZE, 0), rom_end_{ ROM_OFFSET + rom.size() }
 {
-	std::copy(font.begin(), font.end(), ram_.begin());
+	std::copy(FONT.begin(), FONT.end(), ram_.begin());
 	std::copy(rom.begin(), rom.end(), ram_.begin() + ROM_OFFSET);
 }
 

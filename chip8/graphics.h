@@ -14,6 +14,10 @@ static constexpr size_t PIXELS = PIXEL_WIDTH * PIXEL_HEIGHT;
 static constexpr size_t WINDOW_WIDTH = 1024;
 static constexpr size_t WINDOW_HEIGHT = 512;
 
+static constexpr size_t KEYPAD_SIZE = 16;
+
+extern const size_t FONT_SPRITE_SIZE;
+
 class graphics final
 {
 public:
@@ -39,6 +43,6 @@ private:
 	sdl::ptr<sdl::texture> texture_;
 
 	byte bitmap_[PIXELS];
-	bool keys_[16]; // move to constant
+	bool keys_[KEYPAD_SIZE];
 	bool exit_flag_;
 };

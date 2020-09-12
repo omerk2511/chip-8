@@ -619,7 +619,7 @@ instructions::ld_f_reg::ld_f_reg(reg reg)
 
 void instructions::ld_f_reg::execute(cpu& cpu, memory& memory, graphics& graphics) const
 {
-    cpu.i = cpu.gp_regs.arr[static_cast<size_t>(reg_)] * 5; // move 5 to const
+    cpu.i = cpu.gp_regs.arr[static_cast<size_t>(reg_)] * FONT_SPRITE_SIZE;
 }
 
 std::string instructions::ld_f_reg::to_string() const
@@ -694,7 +694,7 @@ std::string instructions::ld_reg_mem::to_string() const
 
 void instructions::invalid::execute(cpu& cpu, memory& memory, graphics& graphics) const
 {
-    // not implemented, should throw an exception
+    throw std::runtime_error("Invalid instruction.");
 }
 
 std::string instructions::invalid::to_string() const

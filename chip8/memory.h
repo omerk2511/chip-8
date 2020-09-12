@@ -10,11 +10,6 @@
 #include "utils.h"
 #include "graphics.h"
 
-namespace parsing
-{
-	std::unique_ptr<instruction> parse_instruction(const word opcode);
-}
-
 extern const size_t MEMORY_SIZE;
 extern const size_t ROM_OFFSET;
 

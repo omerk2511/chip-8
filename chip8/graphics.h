@@ -22,7 +22,6 @@ class graphics final
 {
 public:
 	graphics();
-	~graphics();
 
 	void clear();
 	void draw();

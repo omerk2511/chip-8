@@ -1,5 +1,12 @@
 #include "utils.h"
 #include "program.h"
+#include "sdl.h"
+
+void run(const std::string& path)
+{
+	program program{ utils::read_rom(path) };
+	program.emulate();
+}
 
 int main(int argc, char* argv[])
 {
@@ -9,8 +16,9 @@ int main(int argc, char* argv[])
 	}
 
 	try {
-		program program{ utils::read_rom(argv[1]) };
-		program.emulate();
+		sdl::init(SDL_INIT_VIDEO);
+		run(argv[1]);
+		sdl::quit();
 	} catch(std::exception& e) {
 		std::cout << "[-] Error: " << e.what() << std::endl;
 	} catch (...) {

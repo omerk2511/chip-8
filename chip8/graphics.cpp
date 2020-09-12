@@ -26,8 +26,6 @@ const size_t FONT_SPRITE_SIZE = 5;
 graphics::graphics()
 	: window_{ }, renderer_{ }, texture_{ }, bitmap_{ 0 }, keys_{ false }, exit_flag_{ false }
 {
-	sdl::init(SDL_INIT_VIDEO);
-
 	window_ = sdl::create_window(
 		WINDOW_NAME.c_str(),
 		SDL_WINDOWPOS_UNDEFINED,
@@ -55,13 +53,6 @@ graphics::graphics()
 		PIXEL_WIDTH,
 		PIXEL_HEIGHT
 	);
-}
-
-graphics::~graphics()
-{
-	try {
-		sdl::quit();
-	} catch (...) { }
 }
 
 void graphics::clear()
